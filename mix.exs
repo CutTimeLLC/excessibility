@@ -74,7 +74,7 @@ defmodule Excessibility.MixProject do
       {:ecto, "~> 3.0", only: :test},
       {:ex_doc, "~> 0.18", only: :dev, runtime: false},
       {:floki, ">= 0.30.0"},
-      {:igniter, ">= 0.7.0", runtime: false},
+      {:igniter, ">= 0.7.0", runtime: false, optional: true},
       {:jason, "~> 1.4"},
       {:mix_test_interactive, "~> 5.0", only: :dev, runtime: false},
       {:mox, "~> 1.1", only: :test},

@@ -1,3 +1,4 @@
+if Code.ensure_loaded?(Igniter.Mix.Task) do
 defmodule Mix.Tasks.Excessibility.Install do
   @shortdoc "Installs Excessibility configuration into your project"
   @moduledoc """
@@ -552,4 +553,5 @@ defmodule Mix.Tasks.Excessibility.Install do
     - Assigns help understand what changed between events
     """
   end
+end
 end
