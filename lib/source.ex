@@ -24,14 +24,15 @@ defprotocol Excessibility.Source do
   @doc """
   Converts a test source into HTML content.
 
-  Returns either a binary HTML string or a Floki-parsed HTML tree.
+  Returns either a binary HTML string, Floki-parsed HTML tree, or nil.
   """
-  @spec to_html(term()) :: binary() | tuple() | list(tuple())
+  @spec to_html(term()) :: binary() | tuple() | list(tuple()) | nil
   def to_html(source)
 end
 
 defimpl Excessibility.Source, for: Plug.Conn do
-  def to_html(conn), do: Phoenix.ConnTest.html_response(conn, 200)
+  def to_html(%{status: status}) when status >= 400, do: nil
+  def to_html(%{status: status} = conn), do: Phoenix.ConnTest.html_response(conn, status)
 end
 
 if Code.ensure_loaded?(Wallaby.Session) do
